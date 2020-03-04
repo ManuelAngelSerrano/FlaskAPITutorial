@@ -10,12 +10,12 @@ class tasksDAO:
         query = f"SELECT * FROM tasks WHERE id={task_id};"
         return dbBroker().query(query)
 
-    def set(self, task_id, priority, task):
-        query = f"INSERT INTO tasks (id, priority, task) VALUES ({task_id},{priority},{task});"
+    def set(self, priority, task):
+        query = f"INSERT INTO tasks (priority, task) VALUES ('{priority}', '{task}');"
         dbBroker().execute(query)
 
     def update(self, task_id, priority, task):
-        query = f"UPDATE tasks SET priority={priority}, task={task} WHERE id={task_id};"
+        query = f"UPDATE tasks SET priority='{priority}', task='{task}' WHERE id='{task_id}';"
         dbBroker().execute(query)
 
     def delete(self, task_id):

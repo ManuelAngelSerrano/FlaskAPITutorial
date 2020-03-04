@@ -19,4 +19,4 @@ class dbBroker:
 
     def execute(self, consulta):
         self.cursor.execute(consulta)
-        self.cursor.commit()
+        self.conn.commit()
