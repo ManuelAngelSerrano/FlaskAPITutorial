@@ -9,3 +9,7 @@ class tasksDAO:
     def get(self, task_id):
         getTask_query = f"SELECT * FROM tasks WHERE id={task_id};"
         return dbBroker().query(getTask_query)
+
+    def set(self, task_id, priority, task):
+        setTask_query = f"INSERT INTO tasks (id, priority, task) VALUES ({task_id},{priority},{task});"
+        dbBroker().execute(setTask_query)
