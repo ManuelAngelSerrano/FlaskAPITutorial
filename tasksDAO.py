@@ -3,13 +3,25 @@ from dbBroker import dbBroker
 class tasksDAO:
 
     def getAll(self):
-        getAll_query = 'SELECT * FROM tasks;'   
-        return dbBroker().query(getAll_query)
+        query = 'SELECT * FROM tasks;'   
+        return dbBroker().query(query)
 
     def get(self, task_id):
-        getTask_query = f"SELECT * FROM tasks WHERE id={task_id};"
-        return dbBroker().query(getTask_query)
+        query = f"SELECT * FROM tasks WHERE id={task_id};"
+        return dbBroker().query(query)
 
     def set(self, task_id, priority, task):
-        setTask_query = f"INSERT INTO tasks (id, priority, task) VALUES ({task_id},{priority},{task});"
-        dbBroker().execute(setTask_query)
+        query = f"INSERT INTO tasks (id, priority, task) VALUES ({task_id},{priority},{task});"
+        dbBroker().execute(query)
+
+    def update(self, task_id, priority, task):
+        query = f"UPDATE tasks SET priority={priority}, task={task} WHERE id={task_id};"
+        dbBroker().execute(query)
+
+    def delete(self, task_id):
+        query = f"DELETE FROM tasks WHERE id={task_id};"
+        dbBroker().execute(query)
+
+    def deleteAll(self):
+        query = f"DELETE FROM tasks;"
+        dbBroker().execute(query)
